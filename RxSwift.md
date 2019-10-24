@@ -1,22 +1,22 @@
 # RxSwift
 
-개념 : Swift에서 쓰이는 리액티브 프로그래밍 방식의 라이브러리?
+개념 : Swift에서 쓰이는 리액티브 프로그래밍 방식의 라이브러리
 
-
+<br/>
 
 ### # Observable
 
-**: observer가 구독할 수 있는 객체?**
+**: observer가 구독할 수 있는 객체**
 
-=> Observable이 배출하는 하나 or 연속된 항목에 반응
-
-
+=> Observable이 배출하는 하나 or 연속된 항목에 반응
 
 
 
 
 
-##### **## <u>Subscribe 메서드</u>를 통해 observer <=> observable 을 연결한다.**
+
+
+#### **## <u>Subscribe 메서드</u>를 통해 observer <=> observable 을 연결한다.**
 
 1.  onNext 
 
@@ -38,7 +38,7 @@
 
 
 
-##### ## Unsubscribing
+#### ## Unsubscribing
 
 
 
@@ -54,7 +54,7 @@ http://reactivex.io/documentation/observable.html
 
 
 
-
+<br/>
 
 ### # Operator
 
@@ -81,6 +81,14 @@ http://reactivex.io/documentation/observable.html
 - Defer
 
 - Empty / Never / Throw
+
+  Empty
+
+  항목이 없지만 정상적으로 종료되는 Observable 반환 => return Void 같은 느낌
+
+  ex. Driver.empty(), Observable.empty()
+
+  
 
 - From
 
@@ -139,11 +147,21 @@ http://reactivex.io/documentation/observable.html
 : 여러 Observable을 결합하여 단일 Observable을 생성
 
 - And / Then / When
+
 - CombineLatest
+
+  여러개의 Observable을 묶는데, 그 중 하나가 이벤트가 발생하더라도 그 새로운 이벤트로 갱신하여 새로운 데이터 반환
+
 - Join
+
 - Merge
+
+  여러개의 Observable을 결합 (Observable의 타입들이 모두 같아야함)
+
 - StartWith
+
 - Switch
+
 - Zip
 
 
@@ -161,7 +179,7 @@ http://reactivex.io/documentation/observable.html
 
 
 
-
+<br/>
 
 ### # Subject
 
