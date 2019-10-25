@@ -22,9 +22,8 @@
    => 오류정보를 저장하고 있는 객체를 파라미터로 전달 받음  
    **이 메소드가 호출되면 onNext, onCompleted 는 더이상 호출되지 않음!**
 
-3. onCompleted
-
-   마지막 onNext 호출 이후 이 메소드 호출 (오류가 발생하지 않았을 시)
+3. onCompleted  
+마지막 onNext 호출 이후 이 메소드 호출 (오류가 발생하지 않았을 시)
 
 
 
@@ -59,23 +58,23 @@ http://reactivex.io/documentation/observable.html
 
   
 
+  
+
 - Defer
 
-- Empty / Never / Throw
-
-  Empty  
-항목이 없지만 정상적으로 종료되는 Observable 반환 => return Void 같은 느낌  
-  ex. Driver.empty(), Observable.empty()
-
+- Empty / Never / Throw  
+Empty  
+  : 항목이 없지만 정상적으로 종료되는 Observable 반환 => return Void 같은 느낌  
+    ex. `Driver.empty()`, `Observable.empty()`
+  
 - From  
 여러 객체, 데이터들을 차례대로 방출하는 Observable 생성
   
 - Interval
 
-- Just
-
-  들어온 값을 그대로 방출하는 Observable 생성
-
+- Just  
+들어온 값을 그대로 방출하는 Observable 생성
+  
 - Range
 
 - Repeat
@@ -92,7 +91,8 @@ http://reactivex.io/documentation/observable.html
 
 - Buffer
 - FlatMap
-- Map
+- Map  
+  
 - GroubBy
 - Scan
 - Window
@@ -157,6 +157,51 @@ http://reactivex.io/documentation/observable.html
 
 ### # Subject
 
+: 데이터를 전달받아 Subscriber들에게 뿌려주는 역할
+
+#### ## PublishSubject
+
+<img width="500" alt="S PublishSubject" src="https://user-images.githubusercontent.com/47735434/67456236-02c66200-f66b-11e9-9863-c4ef9969ff9c.png">
+
+=> 이 PublishSubject를 Subscribe하고 있는 Observable들에게 **`Subscribe한 시점 이후로 생긴 아이템`**들만 방출함
+
+** PublishSubject가 에러로 종료되면 그 구독자 Observable들에게 항목을 방출하지않고, 오류알림을 전달
+
+
+
+#### ## BehaviorSubject
+
+<img width="500" alt="S BehaviorSubject" src="https://user-images.githubusercontent.com/47735434/67456500-ec6cd600-f66b-11e9-981e-6019d062f5f8.png">
+
+=> PublishSubject와 유사함. But. **`Subscribe한 시점에 BehaviorSubject의 가장 마지막 아이템`**을 가져옴.
+(BehaviorSubject가 하나이상의 아이템을 가지고있어야하기때문에 생성 시 초기값 필요)
+
+** 에러로 종료될시 PublishSubject 과정과 동일
+
+
+
+#### ## ReplaySubject
+
+<img width="500" alt="S ReplaySubject" src="https://user-images.githubusercontent.com/47735434/67538794-1cbf7d80-f71b-11e9-8d91-699360104b59.png">
+
+=> 특정 크기만큼의 최신 이벤트를 캐싱하고 있다가 Subscriber에게 한번에 방출함.
+
+
+
+출처  
+https://rhammer.tistory.com/289
+
+
+
+#### ## AsyncSubject
+
+<img width="500" alt="S AsyncSubject" src="https://user-images.githubusercontent.com/47735434/67460636-7883fb00-f676-11e9-8981-6c9620db4239.png">
+
+=> 아이템들 중 **`마지막 아이템 (Complete 됬을 때 발생)`**을 Subscriber하고 있는 Observable들에게 방출
+
+
+
+#### ## Variable
 
 
 
@@ -164,4 +209,4 @@ http://reactivex.io/documentation/observable.html
 
 
 
-
+### # Relay
